@@ -6,7 +6,7 @@ dotenv.config({
     path: '/config/config.env'
 })
 
-const backgroundRouter = require('./routes/index');
+const backgroundRouter = require('./routes/background');
 
 const app = express();
 
