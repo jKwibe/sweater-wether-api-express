@@ -18,7 +18,6 @@ describe('Map Service', () => {
     })
     it('GET the correct field', async ()=> {
         const response = await getAddress('denver,co')
-
         expect(typeof response).to.eql('object')
 
         expect(Object.keys(response)).to.include('results')
