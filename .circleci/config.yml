@@ -12,7 +12,7 @@ jobs:
         — checkout
         - run:
           name: install-npm
-          command: npm install
+          command: 'npm install'
         - run:
             name: test
-            command: yarn test
+            command: 'npm test'
