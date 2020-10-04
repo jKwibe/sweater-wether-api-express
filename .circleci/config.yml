@@ -6,13 +6,13 @@ version: 2.1 # using 2.1 provides access to orbs and other features
 jobs:
   build:
     docker:
-      — image: circleci/node@3.0.0
+      — image: circleci/node:10.16.3
     working_directory: ~/repo
     steps:
-        — checkout
-        - run:
-          name: install-npm
-          command: 'npm install'
-        - run:
-            name: test
-            command: 'npm test'
+      - checkout
+      - run:
+        name: install
+        command: 'npm install'
+      - run:
+          name: test
+          command: 'npm test'
