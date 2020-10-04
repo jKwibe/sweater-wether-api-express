@@ -1,0 +1,12 @@
+version: '2.4'
+
+services:
+  node:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    volumes:
+      - .:/app:delegated
+    ports:
+      - "8080:3000"
