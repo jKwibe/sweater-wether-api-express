@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       — image: circleci/node@2.0.2
-    working_directory: ~/repo
+    working_directory: ~/sweater-wether-api-express
     steps:
       - checkout
       - run:
