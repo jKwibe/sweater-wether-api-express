@@ -4,3 +4,4 @@ This project is the nodejs implementation of [Sweater Weather API](https://githu
 Learning Goals 
 - Testing Nodejs
 - API calls using axios
+- Using Docker to containerize an application.
