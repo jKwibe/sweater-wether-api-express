@@ -6,11 +6,14 @@ dotenv.config({
     path: '/config/config.env'
 })
 
-const backgroundRouter = require('./routes/background');
+const backgroundRouter = require('./routes/app/v1/background');
 
 const app = express();
 
-app.use(logger('dev'));
+if (process.env.NODE_ENV == 'development'){
+    app.use(logger('dev'));
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
