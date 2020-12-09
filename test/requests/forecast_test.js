@@ -25,7 +25,8 @@ describe('GET FORECAST', ()=>{
     it('should return forecast data', function (done) {
         chai
             .request(app)
-            .get('/api/v1/forecast?location=denver,co')
+            .get('/api/v1/forecast')
+            .query({ location: 'denver,co'})
             .end((err, res)=>{
                 let data = res.body
                 expect(res.status).to.eql(200)
@@ -36,6 +37,35 @@ describe('GET FORECAST', ()=>{
                 expect(Object.keys(data)).to.include('attributes')
                 expect(Object.keys(data)).to.include('attributes')
                 expect(Object.keys(data)).to.include('attributes')
+                done();
+            })
+    });
+})
+
+describe('GET Forecast with Coordinates', ()=>{
+    const lat = '39.738453'
+    const lon = '-104.984853'
+    beforeEach(()=>{
+        nock('https://api.openweathermap.org/data/2.5/')
+            .get(`/onecall?appid=${process.env.WEATHER_KEY}&lat=${lat}&lon=${lon}`)
+            .reply(200, JSON.parse(fileData))
+    });
+
+    it('should return forecast data using coordinates', function (done) {
+        chai
+            .request(app)
+            .get('/api/v1/forecast')
+            .query({ latitude: lat, longitude: lon })
+            .end((err, response)=>{
+                let info = response.body
+                expect(response.status).to.eql(200)
+                expect(Object.keys(info)).to.include('id')
+                expect(Object.keys(info)).to.include('type')
+                expect(Object.keys(info)).to.include('attributes')
+
+                expect(Object.keys(info)).to.include('attributes')
+                expect(Object.keys(info)).to.include('attributes')
+                expect(Object.keys(info)).to.include('attributes')
                 done();
             })
     });
